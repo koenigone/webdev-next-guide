@@ -1,26 +1,36 @@
+'use client'
+import "./navbar.css";
 import Link from "next/link";
+import React, { useState } from "react";
 
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false); 
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen); // Toggle the state
+    };
+
     return(
         <nav>
-            <menu>
+            <button className='burger' onClick={toggleMenu}>&#9776;</button>
+            <menu className={menuOpen ? "active" : ""}>
                 <li>
-                    <Link href='/'>
+                    <Link href='/' onClick={toggleMenu}>
                         Home
                     </Link>
                 </li>
                 <li>
-                    <Link href='/about'>
+                    <Link href='/about' onClick={toggleMenu}>
                         About
                     </Link>
                 </li>
                 <li>
-                    <Link href='/staff'>
+                    <Link href='/staff' onClick={toggleMenu}>
                         Staff
                     </Link>
                 </li>
                 <li>
-                    <Link href='/students'>
+                    <Link href='/students' onClick={toggleMenu}>
                         Students
                     </Link>
                 </li>
